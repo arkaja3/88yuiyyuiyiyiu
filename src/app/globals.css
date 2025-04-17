@@ -1,0 +1,1244 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 25% 97%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 215 60% 50%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222 47% 11%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 215 60% 50%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Кастомные брейкпоинты для очень маленьких экранов */
+@layer utilities {
+  /* xs - для экранов меньше 400px */
+  @media (min-width: 400px) {
+    .xs\:grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .xs\:text-base {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+    .xs\:px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .xs\:py-3 {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+  }
+}
+
+/* Общие анимации */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes gradientBg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--primary) / 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(var(--primary) / 0);
+  }
+}
+
+/* Классы анимаций */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-in-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-in-out forwards;
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.6s ease-in-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-ripple {
+  animation: ripple 1.5s infinite;
+}
+
+.animate-gradient {
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(215, 70%, 60%), hsl(225, 80%, 65%));
+  background-size: 200% 200%;
+  animation: gradientBg 15s ease infinite;
+}
+
+/* Стили для скролла */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
+
+/* Стили для героя и карточек */
+.hero-gradient {
+  background: linear-gradient(135deg, hsl(215, 70%, 50%), hsl(240, 70%, 40%));
+  background-size: 200% 200%;
+  animation: gradientBg 15s ease infinite;
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для заголовков с подчеркиванием */
+.heading-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.heading-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: hsl(var(--primary));
+  transition: width 0.3s ease;
+}
+
+.heading-underline:hover::after {
+  width: 100%;
+}
+
+/* Стили для формы */
+.form-input-focus {
+  transition: all 0.3s ease;
+}
+
+.form-input-focus:focus {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+}
+
+/* Стили для кнопок */
+.btn-gradient {
+  background: linear-gradient(135deg, hsl(215, 70%, 50%), hsl(240, 70%, 40%));
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, hsl(215, 70%, 45%), hsl(240, 70%, 35%));
+  transform: translateY(-2px);
+}
+
+/* Новый улучшенный дизайн для карточек выбора транспорта */
+.vehicle-class-card {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 190px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.vehicle-class-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.vehicle-class-card .card-gradient {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.vehicle-class-card .card-gradient::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vehicle-class-card:hover .card-gradient::after {
+  transform: translateY(0);
+}
+
+.vehicle-class-card .card-content {
+  padding: 0.75rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.dark .vehicle-class-card .card-content {
+  background: #1f2937;
+}
+
+.vehicle-class-card .card-icon {
+  width: 45px;
+  height: 45px;
+  margin-bottom: 0.5rem;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.vehicle-class-card:hover .card-icon {
+  transform: scale(1.15) translateY(-2px);
+}
+
+.vehicle-class-card .vehicle-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.vehicle-class-card .vehicle-price {
+  font-size: 0.8rem;
+  color: rgba(107, 114, 128, 0.8);
+  text-align: center;
+}
+
+.dark .vehicle-class-card .vehicle-price {
+  color: rgba(156, 163, 175, 0.8);
+}
+
+.vehicle-class-card .premium-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #f43f5e, #ef4444);
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 30px;
+  box-shadow: 0 2px 5px rgba(239, 68, 68, 0.4);
+  transition: all 0.3s ease;
+  transform: scale(1);
+  z-index: 10;
+}
+
+.vehicle-class-card:hover .premium-badge {
+  transform: scale(1.05);
+  box-shadow: 0 3px 8px rgba(239, 68, 68, 0.5);
+}
+
+/* Улучшенные стили для кнопок в блоке автопарка */
+.vehicles-tab-active {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Новые стили для карусели автомобилей */
+.vehicle-carousel-card {
+  position: relative;
+  border-radius: 1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+}
+
+.vehicle-carousel-card img,
+.vehicle-carousel-card [style*="background-image"] {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vehicle-carousel-card:hover img,
+.vehicle-carousel-card:hover [style*="background-image"] {
+  transform: scale(1.05);
+}
+
+/* Стили для кнопок-индикаторов выбора класса транспорта */
+.vehicle-selector-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  border: none;
+  outline: none;
+}
+
+.vehicle-selector-button:hover {
+  transform: translateY(-2px);
+}
+
+.vehicle-selector-button:active {
+  transform: translateY(0);
+}
+
+.vehicle-selector-button::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+  opacity: 0;
+}
+
+.vehicle-selector-button:hover::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.vehicle-selector-button.active::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* Остальные стили для кнопок в блоке автопарка */
+.vehicles-tab-active::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, hsl(215, 70%, 50%), hsl(240, 70%, 40%));
+  transform: scaleX(0);
+  transform-origin: center;
+}
+
+.vehicles-tab-active[data-state="active"]::before {
+  transform: scaleX(1);
+}
+
+.vehicle-order-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.vehicle-order-button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.4s ease;
+}
+
+.vehicle-order-button:hover::after {
+  left: 100%;
+}
+
+.btn-outline {
+  position: relative;
+  border: 2px solid hsl(var(--primary));
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: hsl(var(--primary));
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.btn-outline:hover {
+  color: hsl(var(--primary-foreground));
+}
+
+.btn-outline:hover::before {
+  width: 100%;
+}
+
+/* Стили для блога */
+.blog-card-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-card-hover img {
+  transition: transform 0.6s ease;
+}
+
+.blog-card-hover:hover img {
+  transform: scale(1.05);
+}
+
+.blog-card-hover .blog-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  padding: 1.5rem;
+  transform: translateY(20%);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.blog-card-hover:hover .blog-overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Стили для навигации */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: hsl(var(--primary));
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Стили для отзывов */
+.review-card {
+  position: relative;
+}
+
+.review-card::before {
+  content: '"';
+  font-size: 5rem;
+  line-height: 1;
+  position: absolute;
+  top: -1rem;
+  left: 1rem;
+  color: hsl(var(--primary) / 0.1);
+  z-index: 0;
+}
+
+/* Дополнительные улучшения для адаптивности - ТОЛЬКО ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
+@media (max-width: 640px) {
+  .vehicles-tab-active {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .vehicle-order-button {
+    font-size: 0.875rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .heading-underline::after {
+    width: 40px;
+  }
+
+  /* Общие стили для scroll-панелей вкладок на мобильных */
+  div[role="tablist"] {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    padding-bottom: 0.5rem;
+  }
+
+  div[role="tablist"]::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+
+  /* Стили для кнопок в админ-панели */
+  [data-orientation="horizontal"][role="tablist"] button {
+    white-space: nowrap;
+    font-size: 0.875rem;
+  }
+
+  /* Контейнеры на всю ширину на мобильных устройствах */
+  .card,
+  .form-container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Улучшение отображения кнопок в админ-панели */
+  .admin-card-footer button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  /* Дополнительные стили для адаптации кнопок vehicles - ТОЛЬКО ДЛЯ МОБИЛЬНЫХ */
+  .vehicles-tabs-list {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0 -4px;
+    padding: 0 4px;
+  }
+
+  .vehicles-tabs-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .vehicle-tab-item {
+    flex: 0 0 auto;
+    min-width: 80px;
+  }
+
+  /* Стили для кнопок прокрутки - ТОЛЬКО ДЛЯ МОБИЛЬНЫХ */
+  .vehicles-tabs-container {
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+  }
+
+  .vehicles-tabs-container button {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+  }
+
+  .vehicles-tabs-container button:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .dark .vehicles-tabs-container button {
+    background: rgba(50, 50, 60, 0.8);
+  }
+
+  .dark .vehicles-tabs-container button:hover {
+    background: rgba(60, 60, 70, 0.95);
+  }
+
+  /* Правый градиент - ТОЛЬКО ДЛЯ МОБИЛЬНЫХ */
+  .vehicles-tabs-container::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 20px;
+    background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.85));
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Левый градиент - ТОЛЬКО ДЛЯ МОБИЛЬНЫХ */
+  .vehicles-tabs-container::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 20px;
+    background: linear-gradient(to left, rgba(255,255,255,0), rgba(255,255,255,0.85));
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0; /* По умолчанию скрыт */
+    transition: opacity 0.3s ease;
+  }
+
+  /* Показываем левый градиент, когда можно прокрутить влево */
+  .vehicles-tabs-container.can-scroll-left::before {
+    opacity: 1;
+  }
+
+  .dark .vehicles-tabs-container::after {
+    background: linear-gradient(to right, rgba(31,41,55,0), rgba(31,41,55,0.85));
+  }
+
+  .dark .vehicles-tabs-container::before {
+    background: linear-gradient(to left, rgba(31,41,55,0), rgba(31,41,55,0.85));
+  }
+}
+
+/* Дополнительные стили для очень маленьких устройств */
+@media (max-width: 400px) {
+  [data-orientation="horizontal"][role="tablist"] button {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  [data-orientation="horizontal"][role="tablist"] button svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-right: 0.25rem;
+  }
+
+  .vehicles-tab-active {
+    padding: 0.375rem 0.5rem;
+  }
+
+  .vehicle-tab-text {
+    font-size: 0.7rem;
+  }
+
+  .vehicle-tab-icon {
+    width: 0.7rem;
+    height: 0.7rem;
+  }
+
+  .vehicle-tab-item {
+    min-width: 70px;
+    padding: 0.3rem 0.4rem;
+  }
+}
+
+/* Специальные адаптации для конкретных разрешений - ТОЛЬКО ДЛЯ МОБИЛЬНЫХ*/
+/* Для экранов 320px - 359px */
+@media (min-width: 320px) and (max-width: 359px) {
+  .vehicles-tabs-list {
+    gap: 0.25rem;
+    padding: 1px;
+    justify-content: flex-start;
+  }
+
+  .vehicle-tab-item {
+    min-width: 54px;
+    padding: 0.2rem 0.25rem;
+    margin: 1px;
+  }
+
+  .vehicle-tab-text {
+    font-size: 0.62rem;
+    margin-left: 1px;
+  }
+
+  .vehicle-tab-icon {
+    width: 0.6rem;
+    height: 0.6rem;
+    margin-right: 1px;
+  }
+
+  /* Уменьшаем кнопки прокрутки для очень узких экранов */
+  .vehicles-tabs-container button {
+    width: 20px;
+    height: 20px;
+  }
+
+  .vehicles-tabs-container button svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Для экранов 360px - 374px */
+@media (min-width: 360px) and (max-width: 374px) {
+  .vehicles-tabs-list {
+    gap: 0.35rem;
+    justify-content: flex-start;
+  }
+
+  .vehicle-tab-item {
+    min-width: 63px;
+    padding: 0.25rem 0.35rem;
+    margin: 1px;
+  }
+
+  .vehicle-tab-text {
+    font-size: 0.68rem;
+  }
+
+  .vehicle-tab-icon {
+    width: 0.68rem;
+    height: 0.68rem;
+  }
+}
+
+/* Для экранов 375px - 413px */
+@media (min-width: 375px) and (max-width: 413px) {
+  .vehicles-tabs-list {
+    gap: 0.45rem;
+    justify-content: flex-start;
+  }
+
+  .vehicle-tab-item {
+    min-width: 66px;
+    padding: 0.3rem 0.4rem;
+    margin: 1px;
+  }
+
+  .vehicle-tab-text {
+    font-size: 0.7rem;
+  }
+
+  .vehicle-tab-icon {
+    width: 0.7rem;
+    height: 0.7rem;
+  }
+}
+
+/* Для экранов 414px - 479px */
+@media (min-width: 414px) and (max-width: 479px) {
+  .vehicles-tabs-list {
+    gap: 0.55rem;
+    justify-content: flex-start;
+  }
+
+  .vehicle-tab-item {
+    min-width: 72px;
+    padding: 0.35rem 0.45rem;
+    margin: 1px;
+  }
+
+  .vehicle-tab-text {
+    font-size: 0.73rem;
+  }
+
+  .vehicle-tab-icon {
+    width: 0.73rem;
+    height: 0.73rem;
+  }
+}
+
+/* Для экранов 480px - 639px */
+@media (min-width: 480px) and (max-width: 639px) {
+  .vehicles-tabs-list {
+    gap: 0.6rem;
+    justify-content: flex-start;
+  }
+
+  .vehicle-tab-item {
+    min-width: 75px;
+    padding: 0.4rem 0.5rem;
+    margin: 1px;
+  }
+
+  .vehicle-tab-text {
+    font-size: 0.76rem;
+  }
+
+  .vehicle-tab-icon {
+    width: 0.76rem;
+    height: 0.76rem;
+  }
+}
+
+/* Классы задержки для последовательности анимаций */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+.delay-900 { animation-delay: 900ms; }
+.delay-1000 { animation-delay: 1000ms; }
+
+/* iOS specific fixes for calendar */
+@supports (-webkit-touch-callout: none) {
+  .rdp {
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .rdp-day {
+    padding: 0;
+    margin: 0;
+    min-height: 36px;
+    min-width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Fix for popover on iOS */
+  [role="dialog"] {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Fix for date input on iOS */
+  input[type="time"],
+  input[type="date"] {
+    -webkit-appearance: none;
+    min-height: 36px;
+    padding: 0 10px;
+  }
+}
+
+/* Улучшенные стили для нативных полей даты на всех устройствах */
+input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  height: 2.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  color: inherit;
+  width: 100%;
+}
+
+/* Стили для полей ввода времени на всех устройствах */
+input[type="time"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  height: 2.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  color: inherit;
+  width: 100%;
+}
+
+/* Скрываем нативный календарный виджет и иконки даты/времени для всех устройств */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-time-picker-indicator {
+  display: none;
+  opacity: 0;
+}
+
+/* Стили для iOS */
+@supports (-webkit-touch-callout: none) {
+  /* Общие стили для полей ввода */
+  input[type="date"],
+  input[type="time"] {
+    line-height: 1.2;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  /* iOS Safari имеет специфичный стиль для даты */
+  input[type="date"]::-webkit-date-and-time-value {
+    text-align: left;
+  }
+}
+
+/* Стили для Android и других устройств - удаляем отображение иконок */
+@supports not (-webkit-touch-callout: none) {
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    display: none;
+    opacity: 0;
+  }
+}
+
+/* Fix для блока с отзывами - предотвращение прокрутки */
+#reviews-pagination {
+  scroll-margin-top: 0;
+  scroll-behavior: auto;
+  touch-action: manipulation;
+}
+
+#reviews-pagination button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Предотвращение прокрутки при нажатии на кнопки */
+section#reviews button:active,
+section#reviews button:focus {
+  outline: none;
+  scroll-behavior: auto;
+}
+
+/* Стили для кругового селектора классов автомобилей */
+.vehicle-class-selector {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.vehicle-circle-selector {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+}
+
+.vehicle-circle-selector::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 1px dashed #d4d4d8;
+  opacity: 0.5;
+}
+
+.vehicle-circle-item {
+  transition: all 0.3s ease-in-out;
+}
+
+.vehicle-circle-item div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.vehicle-circle-item.active div {
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.3);
+}
+
+/* Улучшения для табов автомобилей */
+.vehicles-tabs-container {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.vehicles-tabs-container.can-scroll-left::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.9), transparent);
+  z-index: 10;
+}
+
+.vehicle-tab-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.vehicle-tab-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.vehicle-tab-item:hover::before {
+  transform: translateX(100%);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+/* Стили для скрытия полосы прокрутки */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* для Internet Explorer, Edge */
+  scrollbar-width: none;  /* для Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* для Chrome, Safari и Opera */
+}
+
+/* Стили для мобильного селектора автомобилей */
+.vehicle-mobile-selector {
+  position: relative;
+  z-index: 20;
+}
+
+/* Стили для выпадающего списка на мобильных устройствах */
+.vehicle-mobile-dropdown {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Улучшение интерактивности кнопок выбора машин */
+.vehicle-order-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.vehicle-order-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: translateX(-100%);
+}
+
+.vehicle-order-button:hover::after {
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Стили для карусели автомобилей */
+.vehicle-circle-selector {
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (max-width: 414px) {
+  .vehicle-circle-selector {
+    max-width: 320px;
+    height: 320px;
+  }
+
+  .vehicle-circle-item div {
+    width: 18vw !important;
+    height: 18vw !important;
+    max-width: 80px;
+    max-height: 80px;
+  }
+
+  .vehicle-circle-item .w-6 {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .vehicle-circle-item span {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .vehicle-circle-selector {
+    max-width: 280px;
+    height: 280px;
+  }
+
+  .vehicle-circle-item div {
+    width: 16vw !important;
+    height: 16vw !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .vehicle-circle-selector {
+    max-width: 240px;
+    height: 240px;
+  }
+
+  .vehicle-circle-item div {
+    width: 14vw !important;
+    height: 14vw !important;
+    min-width: 50px;
+    min-height: 50px;
+    padding: 2px;
+  }
+
+  .vehicle-circle-item span {
+    font-size: 0.65rem;
+    line-height: 1;
+  }
+
+  .vehicle-circle-item .w-4 {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-bottom: 2px;
+  }
+}
+
+/* Анимация активной кнопки */
+.vehicle-circle-item.active {
+  z-index: 20 !important;
+}
+
+/* Исправление отображения для очень маленьких экранов */
+@media (max-height: 600px) and (max-width: 375px) {
+  .vehicle-circle-selector {
+    max-width: 260px;
+    height: 260px;
+    transform: scale(0.9);
+  }
+}
+
+/* Стили для iOS устройств */
+@supports (-webkit-touch-callout: none) {
+  .vehicle-selector-button {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .vehicle-carousel-card {
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Конец файла */
