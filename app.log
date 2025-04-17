@@ -1,0 +1,139 @@
+$ next start -H "0.0.0.0" -p "3000"
+  ▲ Next.js 14.2.26
+  - Local:        http://localhost:3000
+  - Network:      http://0.0.0.0:3000
+
+ ✓ Starting...
+ ✓ Ready in 676ms
+NextAuth конфигурация в [...nextauth]:
+Доступные провайдеры: [ 'credentials' ]
+Secret задан: true
+🚀 Initializing server resources...
+✅ Server resources initialized successfully
+Rendering blog page, fetching latest posts...
+Connected to database
+Found 1 published blog posts for display
+Rendering blog post page for slug: transfer-iz-kaliningrada-v-gdansk
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Fetching featured blog posts for home page
+Found 1 published blog posts
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Fetching featured blog posts for home page
+Found 1 published blog posts
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Fetching featured blog posts for home page
+Found 1 published blog posts
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Fetching featured blog posts for home page
+Found 1 published blog posts
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Fetching featured blog posts for home page
+Found 1 published blog posts
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog post page for slug: transfer-iz-kaliningrada-v-gdansk
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog post page for slug: transfer-iz-kaliningrada-v-gdansk
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+ ⚠ For production Image Optimization with Next.js, the optional 'sharp' package is strongly recommended. Run 'npm i sharp', and Next.js will use it automatically for Image Optimization.
+Read more: https://nextjs.org/docs/messages/sharp-missing-in-production
+Fetching featured blog posts for home page
+Found 1 published blog posts
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog post page for slug: transfer-iz-kaliningrada-v-gdansk
+Fetching featured blog posts for home page
+Found 1 published blog posts
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog post page for slug: transfer-iz-kaliningrada-v-gdansk
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Fetching featured blog posts for home page
+Found 1 published blog posts
+Rendering blog post page for slug: shlnglnglng
+Blog post not found or not published: shlnglnglng
+Error rendering blog post page for slug=shlnglnglng: Error: NEXT_NOT_FOUND
+    at o (/var/www/www-root/data/www/royaltransfer.org/.next/server/app/blog/[slug]/page.js:1:4776)
+    at b (/var/www/www-root/data/www/royaltransfer.org/.next/server/app/blog/[slug]/page.js:1:9346) {
+  digest: 'NEXT_NOT_FOUND'
+}
+Rendering blog post page for slug: populyarnyy-marshrut-iz-kaliningrada-v-gdan%D1%8Csk
+Blog post not found or not published: populyarnyy-marshrut-iz-kaliningrada-v-gdan%D1%8Csk
+Error rendering blog post page for slug=populyarnyy-marshrut-iz-kaliningrada-v-gdan%D1%8Csk: Error: NEXT_NOT_FOUND
+    at o (/var/www/www-root/data/www/royaltransfer.org/.next/server/app/blog/[slug]/page.js:1:4776)
+    at b (/var/www/www-root/data/www/royaltransfer.org/.next/server/app/blog/[slug]/page.js:1:9346) {
+  digest: 'NEXT_NOT_FOUND'
+}
+Fetching featured blog posts for home page
+Found 1 published blog posts
+Rendering blog post page for slug: transfer-iz-kaliningrada-v-gdansk
+Fetching featured blog posts for home page
+Found 1 published blog posts
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Fetching featured blog posts for home page
+Found 1 published blog posts
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog post page for slug: transfer-iz-kaliningrada-v-gdansk
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog post page for slug: transfer-iz-kaliningrada-v-gdansk
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog post page for slug: transfer-iz-kaliningrada-v-gdansk
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog post page for slug: transfer-iz-kaliningrada-v-gdansk
+Rendering blog post page for slug: transfer-iz-
+Blog post not found or not published: transfer-iz-
+Error rendering blog post page for slug=transfer-iz-: Error: NEXT_NOT_FOUND
+    at o (/var/www/www-root/data/www/royaltransfer.org/.next/server/app/blog/[slug]/page.js:1:4776)
+    at b (/var/www/www-root/data/www/royaltransfer.org/.next/server/app/blog/[slug]/page.js:1:9346) {
+  digest: 'NEXT_NOT_FOUND'
+}
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Rendering blog page, fetching latest posts...
+Found 1 published blog posts for display
+Fetching featured blog posts for home page
+Found 1 published blog posts
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Fetching featured blog posts for home page
+Found 1 published blog posts
+Rendering blog post page for slug: transfer-iz-kaliningrada-v-gdansk
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Fetching featured blog posts for home page
+Found 1 published blog posts
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8

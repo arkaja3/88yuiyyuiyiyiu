@@ -1,0 +1,46 @@
+[build]
+  command = "bun install && bun run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NEXT_DISABLE_ESLINT = "1"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Выключаем обработку ассетов, так как Next.js сам это делает
+[build.processing]
+  skip_processing = true
+[build.processing.css]
+  bundle = false
+  minify = false
+[build.processing.js]
+  bundle = false
+  minify = false
+[build.processing.html]
+  pretty_urls = true
+[build.processing.images]
+  compress = true
+
+# Для 404 страницы
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# Handling single-page app routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  command = "bun run dev"
+  port = 3000
+  publish = "out"
+
+[images]
+  remote_images = [
+    "https://images.unsplash.com/.*"
+  ]
