@@ -1,0 +1,238 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Route {
+  id              Int         @id @default(autoincrement())
+  originCity      String
+  destinationCity String
+  distance        Float
+  estimatedTime   String
+  priceComfort    Float
+  priceBusiness   Float
+  priceMinivan    Float
+  description     String?     @db.Text
+  imageUrl        String?     // Добавленное поле для URL изображения
+  popularityRating Int         @default(1)
+  isActive        Boolean     @default(true)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  transfers       Transfer[]
+}
+
+model Vehicle {
+  id             Int               @id @default(autoincrement())
+  class          String
+  brand          String
+  model          String
+  year           Int
+  seats          Int
+  description    String?           @db.Text
+  imageUrl       String?
+  amenities      String?           @db.Text
+  price          Float?            // Добавленное поле для цены
+  isActive       Boolean           @default(true)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  transfers      Transfer[]
+  transferRequests TransferRequest[]
+}
+
+model Transfer {
+  id             Int       @id @default(autoincrement())
+  routeId        Int
+  vehicleId      Int?
+  vehicleClass   String
+  customerName   String
+  customerPhone  String
+  date           DateTime  @db.Date
+  time           String
+  origin         String
+  destination    String
+  paymentMethod  String
+  returnTransfer Boolean   @default(false)
+  comments       String?   @db.Text
+  status         String    @default("pending")
+  price          Float
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  route          Route     @relation(fields: [routeId], references: [id])
+  vehicle        Vehicle?  @relation(fields: [vehicleId], references: [id])
+}
+
+// Новая модель для заявок на трансфер из формы на сайте
+model TransferRequest {
+  id                  Int       @id @default(autoincrement())
+  customerName        String
+  customerPhone       String
+  vehicleClass        String
+  date                DateTime  @db.Date
+  time                String
+  originCity          String
+  originAddress       String
+  destinationCity     String
+  destinationAddress  String?
+  tellDriver          Boolean   @default(false)
+  paymentMethod       String
+  returnTransfer      Boolean   @default(false)
+  returnDate          DateTime? @db.Date
+  returnTime          String?
+  comments            String?   @db.Text
+  status              String    @default("new")
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  vehicleId           Int?
+  vehicle             Vehicle?  @relation(fields: [vehicleId], references: [id])
+}
+
+// Новая модель для заявок из формы обратной связи
+model ContactRequest {
+  id          Int       @id @default(autoincrement())
+  name        String?
+  email       String?
+  phone       String?
+  message     String    @db.Text
+  status      String    @default("new")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model TransferConfig {
+  id          Int       @id @default(1)
+  title       String    @default("Заказать трансфер")
+  description String    @default("Заполните форму ниже, и мы свяжемся с вами для подтверждения заказа") @db.Text
+  vehicleOptions String? @db.Text  // JSON строка с настройками автомобилей для формы
+  customImageUrls String? @db.Text // JSON строка с URL изображений, если отличаются от основных
+  useVehiclesFromDb Boolean @default(true) // Использовать ли автомобили из базы данных
+  updatedAt    DateTime @updatedAt
+}
+
+model Review {
+  id           Int       @id @default(autoincrement())
+  customerName String
+  rating       Int
+  comment      String    @db.Text
+  imageUrl     String?   // URL аватарки пользователя
+  reviewImageUrl String? // URL изображения отзыва
+  videoUrl     String?   // URL видео отзыва
+  isPublished  Boolean   @default(false) // Изменим на false по умолчанию, чтобы сначала одобрить отзыв
+  isApproved   Boolean   @default(false) // Новое поле для одобрения отзыва админом
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+model BlogPost {
+  id          Int       @id @default(autoincrement())
+  title       String
+  slug        String    @unique
+  content     String    @db.Text
+  imageUrl    String?
+  excerpt     String?   @db.Text
+  isPublished Boolean   @default(true)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Contact {
+  id        Int       @id @default(autoincrement())
+  name      String?
+  email     String?
+  phone     String?
+  message   String    @db.Text
+  isRead    Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model SiteSettings {
+  id           Int      @id @default(1)
+  phone        String   @default("+7 (900) 000-00-00")
+  email        String   @default("info@royaltransfer.ru")
+  address      String   @default("г. Калининград, ул. Примерная, д. 123")
+  workingHours String   @default("Пн-Вс: 24/7")
+  companyName  String   @default("RoyalTransfer")
+  companyDesc  String   @default("Комфортные трансферы из Калининграда в города Европы. Безопасность, комфорт и пунктуальность.") @db.Text
+  instagramLink String  @default("#")
+  telegramLink  String  @default("#")
+  whatsappLink  String  @default("#")
+  googleMapsApiKey String? // API ключ для Google Maps
+  updatedAt    DateTime @updatedAt
+}
+
+model Benefit {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String    @db.Text
+  icon        String
+  order       Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model BenefitStats {
+  id           Int      @id @default(1)
+  clients      String   @default("5000+")
+  directions   String   @default("15+")
+  experience   String   @default("10+")
+  support      String   @default("24/7")
+  updatedAt    DateTime @updatedAt
+}
+
+model HomeSettings {
+  id                Int      @id @default(1)
+  title             String   @default("Комфортные трансферы из Калининграда в Европу")
+  subtitle          String   @default("Безопасные и удобные поездки в города Польши, Германии, Литвы и других стран Европы") @db.Text
+  backgroundImageUrl String?  @default("https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")
+  feature1Title     String   @default("Любые направления") @db.VarChar(100)
+  feature1Text      String   @default("Поездки в основные города Европы по фиксированным ценам") @db.VarChar(255)
+  feature1Icon      String   @default("MapPin") @db.VarChar(50)
+  feature2Title     String   @default("Круглосуточно") @db.VarChar(100)
+  feature2Text      String   @default("Работаем 24/7, включая праздники и выходные дни") @db.VarChar(255)
+  feature2Icon      String   @default("Clock") @db.VarChar(50)
+  feature3Title     String   @default("Гарантия качества") @db.VarChar(100)
+  feature3Text      String   @default("Комфортные автомобили и опытные водители") @db.VarChar(255)
+  feature3Icon      String   @default("Check") @db.VarChar(50)
+  updatedAt         DateTime @updatedAt
+}
+
+// Модель для хранения заявок с формы "Оставить заявку"
+model ApplicationRequest {
+  id              Int       @id @default(autoincrement())
+  name            String
+  phone           String
+  contactMethod   String    // "telegram", "whatsapp", "call" - способ связи
+  status          String    @default("new")
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+// Модель для фотогалереи
+model PhotoGallery {
+  id          Int           @id @default(autoincrement())
+  title       String
+  description String?       @db.Text
+  slug        String        @unique
+  isPublished Boolean       @default(true)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  photos      GalleryPhoto[]
+}
+
+// Модель для фотографий в галерее
+model GalleryPhoto {
+  id          Int          @id @default(autoincrement())
+  url         String
+  title       String?
+  description String?      @db.Text
+  order       Int          @default(0)
+  galleryId   Int
+  gallery     PhotoGallery @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}

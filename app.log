@@ -1,0 +1,28 @@
+$ next start -H "0.0.0.0" -p "3000"
+  ▲ Next.js 14.2.26
+  - Local:        http://localhost:3000
+  - Network:      http://0.0.0.0:3000
+
+ ✓ Starting...
+ ✓ Ready in 700ms
+🚀 Initializing server resources...
+✅ Server resources initialized successfully
+Connected to database
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Fetching featured blog posts for home page
+Found 1 published blog posts
+NextAuth конфигурация в [...nextauth]:
+Доступные провайдеры: [ 'credentials' ]
+Secret задан: true
+ ⨯ The requested resource isn't a valid image for /images/car-silhouette.png received text/html; charset=utf-8
+Заявка на трансфер 57 успешно сохранена в БД.
+Email sent successfully: <a2ae2a67-7fd3-5e97-175e-df088dbff3ea@royaltransfer.org>
+Email уведомление для заказа трансфера 57 успешно отправлено
+Заявка 12 успешно сохранена в БД.
+Email sent successfully: <aabac8cd-fb7b-5c08-009c-a5cc7b41ad9d@royaltransfer.org>
+Email уведомление для заявки 12 успешно отправлено
+Fetching featured blog posts for home page
+Found 1 published blog posts
+Заявка на трансфер 58 успешно сохранена в БД.
+Email sent successfully: <5834e536-5395-efd8-ae13-807a59385bf8@royaltransfer.org>
+Email уведомление для заказа трансфера 58 успешно отправлено
